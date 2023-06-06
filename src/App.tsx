@@ -1,26 +1,22 @@
-import { useEffect } from 'react'
+import { Suspense, useEffect } from 'react'
 import './App.css'
 import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import MainMenu from './MainMenu';
+import { RouterProvider } from 'react-router-dom';
+import useRouterProvider from './routes/useRouterProvider';
 
-const api=axios.create({
+export const api=axios.create({
   baseURL:'http://localhost:8000'
 })
 
 function App() {
-  useEffect(()=>{
-    fetch()
-  },[])
-  const fetch=async()=>{
-    await api.get('/students/1/')
-  }
-
+  const {routerProvider } = useRouterProvider();  
   return (
-    <>
-    <MainMenu/>
-    </>
+    <Suspense fallback={<div>Loading</div>}>
+            <RouterProvider router={routerProvider()} />
+          </Suspense>
   )
 }
 
