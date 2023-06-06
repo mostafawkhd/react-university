@@ -2,6 +2,7 @@ import { Outlet, RouteObject } from 'react-router-dom';
 import MainMenu from '../../MainMenu';
 import Student from '../../student/Student';
 import Department from '../../department/Department';
+import Instructor from '../../instructor/Instructor';
 
 export const mainUrls: RouteObject = {
   path: '',
@@ -20,6 +21,10 @@ export const mainUrls: RouteObject = {
     {
       path:'department',
       element:<Department/>
+    },
+    {
+      path:'instructor',
+      element:<Instructor/>
     }
   ]
 };
